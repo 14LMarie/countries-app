@@ -5,6 +5,6 @@ viewsModule.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
-viewsModule.controller('CountriesCtrl', ['$scope', 'countryService', function (countryService) {
+viewsModule.controller('CountriesCtrl', ['$scope', 'countryService', function ($scope, countryService) {
     var country = new countryService('data');
 }]);
