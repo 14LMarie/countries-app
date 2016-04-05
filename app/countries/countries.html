@@ -1,0 +1,26 @@
+<!--Table Add Bootstrap Styles-->
+<div ng-controller="CountriesCtrl">
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Country Code</th>
+                <th>Capital</th>
+                <th>Area in Km<sup>2</sup></th>
+                <th>Population</th>
+                <th>Continent</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="">
+                <td><a ng-href="">{{countryName}}</a></td>
+                <td>{{countryCode}}</td>
+                <td>{{capital}}</td>
+                <td>{{area}}</td>
+                <td>{{population}}</td>
+                <td>{{continentName}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<a class="button" ng-href="#/home">Home</a>
