@@ -6,5 +6,9 @@ viewsModule.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 viewsModule.controller('CountriesCtrl', ['$scope', 'countryService', function ($scope, countryService) {
-    var country = new countryService('data');
+    $scope.countryResult = [];
+
+    $scope.countryResult.push(new countryService('country'));
+    console.log($scope.countryResult.geonames);
+
 }]);
