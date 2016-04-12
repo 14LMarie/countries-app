@@ -5,10 +5,10 @@ viewsModule.config(['$routeProvider', function ($routeProvider) {
     });
 }]);
 
-viewsModule.controller('CountriesCtrl', ['$scope', 'countryService', function ($scope, countryService) {
-    $scope.countryResult = [];
+viewsModule.controller('CountriesCtrl', function ($scope, countryService) {
+    $scope.countries = [];
 
-    $scope.countryResult.push(new countryService('country'));
-    console.log($scope.countryResult.geonames);
-
-}]);
+    $scope.countries.push(new countryService(this));
+    //console.log(countryResult.geonames);
+    console.log($scope.countries[0].capital);
+});

@@ -16,13 +16,12 @@ angular.module('cocaLibrary', [])
                         params: request
 
                     })
-                    .then(function (data, status, headers, config) {
-                            console.log('Success!' + data);
-                            //countryService.then(function (response) {
-                            angular.extend(self, data);
-                            //});
+                    .then(function (response) {
+                            console.log(response.data.geonames[0].capital);
+
+                            angular.extend(self, response.data.geonames);
                         },
-                        function (data, status, headers, config) {
+                        function (response) {
                             console.log('failure');
                         });
             };

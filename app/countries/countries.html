@@ -12,12 +12,12 @@
             </tr>
         </thead>
         <tbody>
-            <!--ng-repeat-->
 
-            <tr>
+
+            <tr ng-repeat="country in countries" ng-model="acountry">
                 <td><a ng-href="">{{countryName}}</a></td>
                 <td>{{country.countryCode}}</td>
-                <td>{{capital}}</td>
+                <td>{{country.capital}}</td>
                 <td>{{area}}</td>
                 <td>{{population}}</td>
                 <td>{{continentName}}</td>
