@@ -1,10 +1,12 @@
 //api calls
 angular.module('cocaLibrary', [])
-    .factory('countryService', function ($http) {
-        var countryService = function (country) {
+    .factory('countryService', function ($http, $q) {
+        //gets data for all countries
+        var allCountryService = function (country) {
             this.initalize = function () {
+                var defer = $q.defer();
                 var username = 'lmteague';
-                var urlBase = 'http://api.geonames.org/';
+                var urlBase = 'http://api.geonames.org/' + 'countryInfoJSON';
                 var request = {
                     callback: 'JSON_CALLBACK',
                     username: username
@@ -12,23 +14,72 @@ angular.module('cocaLibrary', [])
                 var self = this;
                 $http({
                         method: 'JSONP',
-                        url: urlBase + "countryInfoJSON",
-                        params: request
+                        url: urlBase,
+                        params: request,
+                        cache: true
 
                     })
-                    .then(function (response) {
-                            console.log(response.data.geonames[0].capital);
+                    .success(function (data, status, headers, config) {
+                        if (typeof data.status == 'object') {
+                            console.log("Error" + data.status.message + "'");
+                            defer.reject(data.status);
+                        } else {
+                            defer.resolve(data);
+                        }
+                        /*console.log(response.data.geonames);
+                        $.each(response.data.geonames, function (key, value) {
+                            console.log(value.capital)
+                        });*/
+                    })
 
-                            angular.extend(self, response.data.geonames);
-                        },
-                        function (response) {
-                            console.log('failure');
-                        });
+                .error(function (data, status, headers, config) {
+                    console.log(status + "error attempting to access geonames.org.");
+                    defer.reject()
+                });
+                return defer.promise;
             };
             this.initalize();
         };
-        return (countryService);
+        return (allCountryService);
+        //data for each country individually
+        var oneCountryService = function () {
+            this.initialize = function () {
+
+            }
+        }
+
+        //data for the neighbours of a country
+        var neighbourService = function (countryCode) {
+            this.initalize = function () {
+                var defer = $q.defer();
+                var username = 'lmteague';
+                var urlBase = 'http://api.geonames.org/' + 'neighboursJSON';
+                var request = {
+                    callback: 'JSON_CALLBACK',
+                    country: countryCode,
+                    username: username
+                };
+                var self = this;
+                $http({
+                        method: 'JSONP',
+                        url: urlBase,
+                        params: request,
+                        cache: true
+                    })
+                    .success(function (data, status, headers, config) {
+                        defer.resolve(data);
+                    })
+                    .error(function (data, status, headers, config) {
+                        console.log(status + "error attempting to access geonames.org.");
+                    });
+                return defer.promise;
+            };
+            this.initalize();
+        };
+        return (neighbourService);
     });
+
+
 /*var countryService = function (country) {
         this.initialize = function () {
             var username = 'lmteague';
