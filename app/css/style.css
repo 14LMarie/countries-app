@@ -1,0 +1,316 @@
+/* CSS reset
+(all the browsers will see the website in the same by setting every tag to 0 (the website will look the same on all browsers))
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    /*The box-sizing property is used to tell the browser what the sizing properties (width and height) should include border-box.*/
+    box-sizing: border-box;
+}
+
+
+/* General styles
+(the styles used everywhere in the page (like the Body) or styles which are used in more than 2 of the modules bellow (h2, h3, h4, h5, h6, p, a, ul, li))
+*/
+
+body {
+    text-align: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url("../img/escheresque_@2X.png");
+    background-repeat: repeat;
+    color: #454545;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 1.2rem;
+}
+
+h1 {
+    margin-top: 8rem;
+    font-family: 'Merriweather', serif;
+}
+
+.home-container,
+.countries-container,
+.details-container {
+    margin-top: 4rem;
+}
+
+.button-container {
+    margin: 4rem 0;
+}
+
+.button-container a:link {
+    color: white;
+    text-decoration: none;
+}
+
+.button {
+    background-color: #C72813;
+    padding: 0.5rem 1.5rem;
+    color: white;
+    font-family: 'Oswald', sans-serif;
+}
+
+.button:hover {
+    background-color: #E94A35;
+}
+
+
+/*** HOME VIEW ***/
+
+.instructions-container {
+    padding: 2rem;
+}
+
+.country-details-container,
+table {
+    padding: 1.5rem;
+}
+
+.instructions-container,
+.country-details-container,
+table {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    position: relative;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.instructions-container:before,
+.instructions-container:after,
+.country-details-container:before,
+.country-details-container:after,
+table:before,
+table:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    top: 50%;
+    bottom: 0;
+    left: 10px;
+    right: 10px;
+    -moz-border-radius: 100px / 10px;
+    border-radius: 100px / 10px;
+}
+
+.instructions-container:after,
+.country-details-container: after,
+table: after {
+    right: 10px;
+    left: auto;
+    -webkit-transform: skew(8deg) rotate(3deg);
+    -moz-transform: skew(8deg) rotate(3deg);
+    -ms-transform: skew(8deg) rotate(3deg);
+    -o-transform: skew(8deg) rotate(3deg);
+    transform: skew(8deg) rotate(3deg);
+}
+
+
+/*** COUNTRY VIEW ***/
+
+table {
+    background-color: white;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+thead {
+    background-color: #454545;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2
+}
+
+th,
+td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.country-link {
+    text-decoration: none;
+    color: #247B90;
+    font-weight: 700;
+}
+
+.country-link:hover {
+    color: #3C8B9D;
+}
+
+
+/*** DETAIL VIEW ***/
+
+.country-details-container p {
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+.flag {
+    width: 20rem;
+    border-radius: 20px;
+    border: 0.5px solid #eee;
+}
+
+.flag,
+.map {
+    margin: 2rem 0;
+}
+
+dl {
+    padding: 0.5em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+dt {
+    float: left;
+    clear: left;
+    text-align: right;
+    font-weight: 700;
+    text-align: left;
+}
+
+dt:after {
+    content: ":";
+}
+
+dd {
+    padding: 0 0.2em;
+    text-align: right;
+}
+
+.neighbor-list {
+    list-style: none;
+    padding-right: 0.5em;
+    display: inline-block;
+}
+
+
+/* Responsive styles
+(the very last module in the CSS, contains all the media queries and it is dealing with the compatibility with mobiles and tablets)
+*/
+
+@media only screen and (max-width:1034px) {
+    .country-details-container {
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 760px),
+(max-device-width: 1024px) and (min-device-width: 768px) {
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    tr {
+        padding: 1rem;
+    }
+    td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%;
+    }
+    td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: 700;
+    }
+    td:nth-of-type(1):before {
+        content: "Name:";
+    }
+    td:nth-of-type(2):before {
+        content: "Country Code:";
+    }
+    td:nth-of-type(3):before {
+        content: "Capital:";
+    }
+    td:nth-of-type(4):before {
+        content: "Area in Km:";
+    }
+    td:nth-of-type(5):before {
+        content: "Population:";
+    }
+    td:nth-of-type(6):before {
+        content: "Continent:";
+    }
+}
+
+@media only screen and (max-width:704px) {
+    .instructions-container {
+        width: 334px;
+        height: 224px;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .country-details-container {
+        width: 95%;
+    }
+    h1 {
+        font-size: 1.7rem;
+    }
+    .flag {
+        width: 15rem;
+    }
+}
+
+
+/* Animation styles
+(the transitions between views)
+*/
+
+.fade {
+    height: 100%;
+    opacity: 1;
+}
+
+.fade.ng-enter,
+.fade.ng-leave {
+    transition: all ease 0.8s;
+    -webkit-transition: all ease 0.8s;
+}
+
+.fade.ng-leave.ng-leave-active,
+.fade.ng-enter {
+    opacity: 0;
+}
+
+.fade.ng-leave,
+.fade.ng-enter.ng-enter.active {
+    opacity: 1;
+}

@@ -1,6 +1,6 @@
 <!--Table Add Bootstrap Styles-->
-<div>
-    <table>
+<div class="countries-container">
+    <table id="countries-table" class="large-only stackable small-only test">
         <thead>
             <tr>
                 <th>Name</th>
@@ -15,14 +15,17 @@
 
 
             <tr ng-repeat="country in countries">
-                <td><a ng-href="">{{countryName}}</a></td>
+                <td><a class="country-link" ng-href="#/countries/{{country.countryCode}}">{{country.countryName}}</a></td>
                 <td>{{country.countryCode}}</td>
                 <td>{{country.capital}}</td>
-                <td>{{area}}</td>
-                <td>{{population}}</td>
-                <td>{{continentName}}</td>
+                <td>{{country.areaInSqKm | number}}</td>
+                <td>{{country.population | number}}</td>
+                <td>{{country.continentName}}</td>
             </tr>
         </tbody>
     </table>
+
+    <div class="button-container">
+        <a class="button" ng-href="#/home">Home</a>
+    </div>
 </div>
-<a class="button" ng-href="#/home">Home</a>

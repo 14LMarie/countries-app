@@ -4,17 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Countries and Capitals</title>
-    <link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700|Merriweather|Oswald' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="./bower_components/normalize-css/normalize.css">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
 </head>
 
 <body ng-controller="mainController">
     <h1>Countries and Capitals</h1>
-    <div ng-view></div>
-
+    <div>
+        <div ng-view class="fade"></div>
+    </div>
     <script src="./bower_components/jquery/dist/jquery.js"></script>
-    <script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="https://files-stackablejs.netdna-ssl.com/stacktable.min.js"></script>
     <script src="./bower_components/angular/angular.js"></script>
     <script src="./bower_components/angular-route/angular-route.js"></script>
     <script src="./bower_components/angular-animate/angular-animate.js"></script>

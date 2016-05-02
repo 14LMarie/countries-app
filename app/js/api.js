@@ -28,18 +28,15 @@ angular.module('dataLibrary', [])
                     } else {
                         defer.resolve(data);
                     }
-                    //console.log(response.data.geonames);
-                    /*$.each(response.data.geonames, function (key, value) {
-                            console.log(value.capital)
-                        });*/
-                })
 
-            .error(function (data, status, headers, config) {
-                console.log(status + "error attempting to access geonames.org.");
-                defer.reject();
-            });
+                })
+                .error(function (data, status, headers, config) {
+                    console.log(status + "error attempting to access geonames.org.");
+                    defer.reject();
+                });
             return defer.promise;
         },
+
         //data for each individual country
         oneCountryService: function (countryCode) {
             var defer = $q.defer();
@@ -58,7 +55,7 @@ angular.module('dataLibrary', [])
 
                 })
                 .success(function (data, status, headers, config) {
-                    defer.resolve(data);
+                    defer.resolve(data.geonames);
                 })
                 .error(function (data, status, headers, config) {
                     console.log(status + "error attempting to access geonames.org");
@@ -66,6 +63,7 @@ angular.module('dataLibrary', [])
                 });
             return defer.promise;
         },
+
         //data for neighbours of country
         neighbourService: function (countryCode) {
             var defer = $q.defer();
@@ -93,6 +91,7 @@ angular.module('dataLibrary', [])
         },
 
         capitalService: function (countryCode) {
+            var defer = $q.defer();
             var url = urlBase + 'searchJSON';
             var request = {
                 callback: 'JSON_CALLBACK',
