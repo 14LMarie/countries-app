@@ -17,6 +17,14 @@ angular.module('cocaApp')
         $scope.countries = countryData.countries;
     });
 
+    $scope.predicate = 'countryName';
+    $scope.reverse = false;
+
+    angular.forEach($scope.countries, function (country) {
+        country.areaInSqKm = parseFloat(country.areaInSqKm);
+        country.population = parseFloat(country.population);
+    });
+
 
 }])
 

@@ -1,22 +1,3 @@
-/*describe("cocaApp", function () {
-    beforeEach(module('cocaApp'));
-    describe('countriesCtrl', function () {
-        var ctrl, scope;
-        beforeEach(inject(function ($controller, $rootscope) {
-            scope = $rootscope.$new();
-            ctrl = $controller('countriesCtrl', {
-                $scope: scope,
-                countryData: function () {
-                    return true;
-                }
-            });
-        }));
-        it('should return an array of data from the server', function () {
-            expect(scope.countries).toBe("countryName");
-        });
-    });
-});*/
-
 describe("cocaApp", function () {
     beforeEach(module("cocaApp"));
 
@@ -34,5 +15,27 @@ describe("cocaApp", function () {
                 $httpBackend.verifyNoOutstandingRequest();
 
             }));
+    });
+
+
+    describe('countriesCtrl', function () {
+
+        var controller = null;
+        $scope = null;
+
+        beforeEach(inject(function ($controller, $rootScope) {
+            $scope = $rootScope.$new();
+            controller = $controller('countriesCtrl', {
+                $scope: $scope,
+                countryData: function () {
+                    return true;
+                }
+            });
+        }));
+
+        it('should return an array of data from the server', function () {
+            expect($scope.predicate).toBe("countryName");
+        });
+
     });
 });
