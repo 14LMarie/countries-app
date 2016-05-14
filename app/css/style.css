@@ -33,9 +33,7 @@ h1 {
     font-family: 'Merriweather', serif;
 }
 
-.home-container,
-.countries-container,
-.details-container {
+.view-container {
     margin-top: 4rem;
 }
 
@@ -294,18 +292,96 @@ dd {
 (the transitions between views)
 */
 
-.animate-view {
-    height: 100%;
-    -webkit-transition: all ease 0.8s;
-    transition: all ease 0.8s;
+.view-container {
+    position: relative;
 }
 
-.animate-view.ng-enter,
-.animate-view.ng-leave.ng-leave-active {
-    opacity: 0;
+.view-frame.ng-enter,
+.view-frame.ng-leave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
-.animate-view.ng-leave,
-.animate-view.ng-enter.ng-enter-active {
-    opacity: 1;
+.view-frame.ng-enter-stagger,
+.view-frame.ng-leave-stagger {
+    -webkit-animation-delay: 0.2s;
+    -moz-animation-delay: 0.2s;
+    -o-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+    -webkit-animation-duration: 0;
+    -moz-animation-duration: 0;
+    -o-animation-duration: 0;
+    animation-duration: 0;
+}
+
+.view-frame.ng-enter {
+    -webkit-animation: 1.2s fade-in;
+    -moz-animation: 1.2s fade-in;
+    -o-animation: 1.2s fade-in;
+    animation: 1.2s fade-in;
+    z-index: 100;
+}
+
+.view-frame.ng-leave {
+    -webkit-animation: 1.2s fade-out;
+    -moz-animation: 1.2s fade-out;
+    -o-animation: 1.2s fade-out;
+    animation: 1.2s fade-out;
+    z-index: 99;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
